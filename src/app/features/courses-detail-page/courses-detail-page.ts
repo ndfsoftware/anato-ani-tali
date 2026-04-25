@@ -8,6 +8,9 @@ import { CoursesDetailCard } from './courses-detail-card/courses-detail-card';
 import {
   getCourseStatus,
   getCourseModality,
+  getCourseModalityIcon,
+  getCourseStatusIcon,
+  getCourseStatusIconClasses,
   getCourseStatusColor,
 } from '@app/core/utils/course.utils';
 import { Badge } from '@app/shared/ui/badge/badge';
@@ -28,4 +31,7 @@ export default class CoursesDetailPage {
   readonly status = computed(() => getCourseStatus(this.course()!));
   readonly modality = computed(() => getCourseModality(this.course()!));
   readonly statusColor = computed(() => getCourseStatusColor(this.status()));
+  readonly statusIcon = computed(() => getCourseStatusIcon(this.status()));
+  readonly statusIconClasses = computed(() => getCourseStatusIconClasses(this.status()));
+  readonly modalityIcon = computed(() => getCourseModalityIcon(this.modality()));
 }

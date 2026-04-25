@@ -2,12 +2,9 @@
   <h1 class="text-4xl md:text-5xl italic font-semibold flex flex-1 justify-center text-primary mb-7">{{ course()?.title
     }}</h1>
   <div class="flex gap-5 mb-5">
-    <!-- <app-badge [title]="status() | titlecase" size="lg" type="primary" [classes]="`${statusColor()} border-primary`" />
-    <app-badge [title]="modality() | titlecase" size="lg" type="primary"
-      [classes]="'border-primary text-card-text font-semibold'" /> -->
-    <app-badge [title]="status() | titlecase" size="lg" type="primary"
-      classes="bg-primary text-primary-content border-primary" />
-    <app-badge [title]="modality() | titlecase" size="lg" type="primary"
+    <app-badge [title]="status() | titlecase" [icon]="statusIcon()" [iconClasses]="statusIconClasses()" size="lg"
+      type="primary" classes="bg-primary text-primary-content border-primary" />
+    <app-badge [title]="modality() | titlecase" [icon]="modalityIcon()" size="lg" type="primary"
       classes="bg-primary text-primary-content border-primary" />
   </div>
   <courses-detail-card [course]="course()!" />

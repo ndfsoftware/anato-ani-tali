@@ -13,10 +13,12 @@ export class Badge {
   size = input.required<BadgeSize>();
   type = input.required<BadgeType>();
   classes = input<string>('');
+  icon = input<string | null>(null);
+  iconClasses = input<string>('material-symbols-outlined text-[0.45rem] leading-none');
 
   badgeClasses = computed(() => {
     const customClasses = this.classes().trim();
-    const baseClasses = `badge badge-${this.size()} badge-${this.type()}`;
+    const baseClasses = `badge badge-${this.size()} badge-${this.type()} inline-flex items-center gap-1.5`;
     return customClasses ? `${baseClasses} ${customClasses}` : baseClasses;
   });
 }
