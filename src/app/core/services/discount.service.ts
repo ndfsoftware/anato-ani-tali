@@ -30,14 +30,14 @@ export class DiscountService {
     },
     {
       id: 4,
-      type: DISCOUNT_TYPE.PAYMENT,
+      type: DISCOUNT_TYPE.INTENSIVO,
       paymentMethodId: 3,
       percentage: 0,
       label: 'en hasta 2 cuotas',
     },
     {
       id: 5,
-      type: DISCOUNT_TYPE.GENERAL,
+      type: DISCOUNT_TYPE.INTENSIVO,
       percentage: 15,
       label: 'Traé un facuamigo y obtengan un descuento cada uno del',
     },

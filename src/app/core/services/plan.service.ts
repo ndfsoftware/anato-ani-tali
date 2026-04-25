@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plan } from '../interfaces/plan.interface';
+import { Plan, PLANT_TYPE } from '../interfaces/plan.interface';
 import { Observable, of } from 'rxjs';
 
 @Injectable({
@@ -19,6 +19,7 @@ export class PlanService {
         'Repaso de Parcial',
       ],
       price: 120000,
+      type: PLANT_TYPE.BASICO,
     },
     {
       id: 2,
@@ -32,6 +33,7 @@ export class PlanService {
         'Repaso de Parcial',
       ],
       price: 150000,
+      type: PLANT_TYPE.PLUS,
     },
   ];
 

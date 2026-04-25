@@ -10,6 +10,7 @@ import {
   getCourseStatus,
   getCourseStatusColor,
 } from '@app/core/utils/course.utils';
+import { COURSE_STATUS } from '@app/core/interfaces/course-status';
 @Component({
   selector: 'course-card',
   standalone: true,
@@ -20,6 +21,7 @@ export class CourseCard {
   activateRoute = inject(ActivatedRoute);
   course = input.required<CourseDetail>();
   readonly courseType = COURSE_TYPE;
+  readonly courseStatus = COURSE_STATUS;
 
   readonly status = computed(() => getCourseStatus(this.course()));
   readonly modality = computed(() => getCourseModality(this.course()));

@@ -9,7 +9,7 @@ export class PaymentService {
   private payments: Payment[] = [
     { id: 1, method: PAYMENT_METHOD.CASH, label: 'Efectivo' },
     { id: 2, method: PAYMENT_METHOD.TRANSFER, label: 'Transferencia' },
-    { id: 3, method: PAYMENT_METHOD.CREDIT, label: 'Tarjeta' },
+    // { id: 3, method: PAYMENT_METHOD.CREDIT, label: 'Tarjeta' },
   ];
 
   getAll(): Observable<Payment[]> {

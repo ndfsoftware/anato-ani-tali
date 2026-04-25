@@ -2,8 +2,11 @@
   <h1 class="text-4xl md:text-5xl italic font-semibold flex flex-1 justify-center text-primary mb-7">{{ course()?.title
     }}</h1>
   <div class="flex gap-5 mb-5">
+    @if (status() !== courseStatus.FINALIZADO) {
     <app-badge [title]="status() | titlecase" [icon]="statusIcon()" [iconClasses]="statusIconClasses()" size="lg"
       type="primary" classes="bg-primary text-primary-content border-primary" />
+    }
+
     <app-badge [title]="modality() | titlecase" [icon]="modalityIcon()" size="lg" type="primary"
       classes="bg-primary text-primary-content border-primary" />
   </div>
@@ -11,6 +14,9 @@
   @if(course()?.plans?.length) {
   <plan-details [plans]="course()?.plans!" />
   }
-  <app-payment-methods class="w-full lg:w-5xl" />
+  @if(course()?.discounts?.length) {
+  <app-discount-methods [discounts]="course()?.discounts!" [price]="course()?.price!" />
+  }
+  <app-payment-methods class="w-full lg:w-5xl" [payments]="course()?.payments ?? []" />
 
 </div>

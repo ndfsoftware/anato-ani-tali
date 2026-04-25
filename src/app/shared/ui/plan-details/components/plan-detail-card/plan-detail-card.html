@@ -4,6 +4,11 @@
 
       <h2 class="text-2xl font-semibold text-primary italic">
         {{plan().title}}
+        @if(plan().type === planType.PLUS) {
+        <span class="material-symbols-outlined">
+          diamond_shine
+        </span>
+        }
       </h2>
 
       <p class="text-base-content">
@@ -19,12 +24,12 @@
         }
       </ul>
 
-      <div class=" flex items-center justify-between gap-2">
+      <div class=" flex items-center justify-end gap-2">
         <span class="text-2xl text-base-content italic font-semibold">
           $ {{plan().price | number:'1.0-0'}}
         </span>
-        <a [href]="instagram()" target="_blank" class="btn btn-primary rounded-lg font-light text-sm">Más
-          Información</a>
+        <!-- <a [href]="instagram()" target="_blank" class="btn btn-primary rounded-lg font-light text-sm">Más
+          Información</a> -->
       </div>
 
     </div>
