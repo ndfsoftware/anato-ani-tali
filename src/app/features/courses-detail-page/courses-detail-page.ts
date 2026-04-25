@@ -1,14 +1,21 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { CourseService } from '../courses-page/services/course.service';
 import { ActivatedRoute } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { PaymentMethods } from '@app/shared/ui/payment-methods/payment-methods';
 import { PlanDetails } from '@app/shared/ui/plan-details/plan-details';
 import { CoursesDetailCard } from './courses-detail-card/courses-detail-card';
+import {
+  getCourseStatus,
+  getCourseModality,
+  getCourseStatusColor,
+} from '@app/core/utils/course.utils';
+import { Badge } from '@app/shared/ui/badge/badge';
+import { TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'courses-detail-page',
-  imports: [PaymentMethods, PlanDetails, CoursesDetailCard],
+  imports: [PaymentMethods, PlanDetails, CoursesDetailCard, Badge, TitleCasePipe],
   templateUrl: './courses-detail-page.html',
 })
 export default class CoursesDetailPage {
@@ -17,4 +24,8 @@ export default class CoursesDetailPage {
 
   slug = this.activateRoute.snapshot.params['slug'];
   course = toSignal(this.courseService.getBySlug(this.slug));
+
+  readonly status = computed(() => getCourseStatus(this.course()!));
+  readonly modality = computed(() => getCourseModality(this.course()!));
+  readonly statusColor = computed(() => getCourseStatusColor(this.status()));
 }

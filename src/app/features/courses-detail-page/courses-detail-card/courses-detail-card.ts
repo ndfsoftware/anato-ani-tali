@@ -15,9 +15,9 @@ import { Badge } from '@app/shared/ui/badge/badge';
 })
 export class CoursesDetailCard {
   course = input.required<CourseDetail>();
-  private readonly now = new Date();
+  // private readonly now = new Date();
 
-  readonly status = computed(() => getCourseStatus(this.course(), this.now));
-  readonly modality = computed(() => getCourseModality(this.course(), this.now));
-  readonly statusColor = computed(() => getCourseStatusColor(this.status()));
+  // readonly status = computed(() => getCourseStatus(this.course()));
+  // readonly modality = computed(() => getCourseModality(this.course()));
+  // readonly statusColor = computed(() => getCourseStatusColor(this.status()));
 }
