@@ -1,8 +1,6 @@
 import { TitleCasePipe } from '@angular/common';
-import { Component, inject } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { PaymentMethod } from '@app/core/interfaces/payment.interface';
-import { PaymentService } from '@app/core/services/payment.service';
+import { Component, input } from '@angular/core';
+import { Payment, PaymentMethod } from '@app/core/interfaces/payment.interface';
 
 @Component({
   selector: 'app-payment-methods',
@@ -11,9 +9,7 @@ import { PaymentService } from '@app/core/services/payment.service';
   standalone: true,
 })
 export class PaymentMethods {
-  private paymentService = inject(PaymentService);
-
-  methods = toSignal(this.paymentService.getAll(), { initialValue: [] });
+  payments = input.required<Payment[]>();
 
   readonly iconClass: Record<PaymentMethod, string> = {
     credit: 'credit_card',

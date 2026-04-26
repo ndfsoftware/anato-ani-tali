@@ -1,9 +1,7 @@
 import { DecimalPipe } from '@angular/common';
-import { Component, input, signal } from '@angular/core';
-import { Plan } from '@app/core/interfaces/plan.interface';
-import { environment } from '@env/environment';
+import { Component, input } from '@angular/core';
+import { Plan, PLANT_TYPE } from '@app/core/interfaces/plan.interface';
 
-const envs = environment;
 @Component({
   selector: 'plan-detail-card',
   imports: [DecimalPipe],
@@ -11,5 +9,5 @@ const envs = environment;
 })
 export class PlanDetailCard {
   plan = input.required<Plan>();
-  instagram = signal(envs?.INSTAGRAM ?? '');
+  planType = PLANT_TYPE;
 }

@@ -1,10 +1,23 @@
 <div class="flex flex-col items-center lg:max-w-5xl mx-auto">
   <h1 class="text-4xl md:text-5xl italic font-semibold flex flex-1 justify-center text-primary mb-7">{{ course()?.title
     }}</h1>
+  <div class="flex gap-5 mb-5">
+    @if (status() !== courseStatus.FINALIZADO) {
+    <app-badge [title]="status() | titlecase" [icon]="statusIcon()" [iconClasses]="statusIconClasses()" size="lg"
+      type="primary" classes="bg-primary text-primary-content border-primary" />
+    }
+
+    <app-badge [title]="modality() | titlecase" [icon]="modalityIcon()" size="lg" type="primary"
+      classes="bg-primary text-primary-content border-primary" />
+  </div>
   <courses-detail-card [course]="course()!" />
   @if(course()?.plans?.length) {
   <plan-details [plans]="course()?.plans!" />
   }
-  <app-payment-methods class="w-full lg:w-5xl" />
+  @if(course()?.discounts?.length) {
+  <app-discount-methods class="w-full lg:w-5xl" [discounts]="course()?.discounts!" [price]="course()?.price ?? null"
+    [plans]="course()?.plans ?? []" />
+  }
+  <app-payment-methods class="w-full lg:w-5xl" [payments]="course()?.payments ?? []" />
 
 </div>

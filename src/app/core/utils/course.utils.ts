@@ -1,7 +1,7 @@
-// core/utils/course.utils.ts
 import { COURSE_STATUS, CourseStatus } from '@app/core/interfaces/course-status';
 import {
   CourseDetail,
+  StudyModality,
   STUDY_MODALITY,
 } from '@app/features/courses-page/interfaces/course.interface';
 
@@ -26,4 +26,33 @@ export function getCourseStatusColor(status: CourseStatus): string {
     [COURSE_STATUS.PROXIMAMENTE]: 'text-blue-700',
   };
   return colors[status];
+}
+
+export function getCourseStatusIcon(status: CourseStatus): string | null {
+  const icons: Record<CourseStatus, string> = {
+    [COURSE_STATUS.FINALIZADO]: 'android_cell_4_bar',
+    [COURSE_STATUS.EN_CURSO]: 'android_cell_4_bar',
+    [COURSE_STATUS.PROXIMAMENTE]: 'android_cell_4_bar',
+  };
+
+  return icons[status];
+}
+
+export function getCourseStatusIconClasses(status: CourseStatus): string {
+  const classes: Record<CourseStatus, string> = {
+    [COURSE_STATUS.FINALIZADO]: 'material-symbols-outlined  leading-none text-red-500',
+    [COURSE_STATUS.EN_CURSO]: 'material-symbols-outlined leading-none text-green-500',
+    [COURSE_STATUS.PROXIMAMENTE]: 'material-symbols-outlined  leading-none text-blue-500',
+  };
+
+  return classes[status];
+}
+
+export function getCourseModalityIcon(modality: StudyModality): string | null {
+  const icons: Record<StudyModality, string> = {
+    [STUDY_MODALITY.SINCRONICO]: 'schedule',
+    [STUDY_MODALITY.ASINCRONICO]: 'computer',
+  };
+
+  return icons[modality];
 }

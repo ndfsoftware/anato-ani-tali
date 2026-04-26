@@ -2,14 +2,15 @@ import { Component, computed, inject, input } from '@angular/core';
 
 import { DatePipe, TitleCasePipe } from '@angular/common';
 import { Badge } from '@app/shared/ui/badge/badge';
-import { COURSE_STATUS, CourseStatus } from '@app/core/interfaces/course-status';
-import { COURSE_TYPE, CourseDetail, STUDY_MODALITY } from '../../interfaces/course.interface';
+import { COURSE_TYPE, CourseDetail } from '../../interfaces/course.interface';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import {
   getCourseModality,
+  getCourseModalityIcon,
   getCourseStatus,
   getCourseStatusColor,
 } from '@app/core/utils/course.utils';
+import { COURSE_STATUS } from '@app/core/interfaces/course-status';
 @Component({
   selector: 'course-card',
   standalone: true,
@@ -22,9 +23,8 @@ export class CourseCard {
   readonly courseType = COURSE_TYPE;
   readonly courseStatus = COURSE_STATUS;
 
-  private readonly now = new Date();
-
-  readonly status = computed(() => getCourseStatus(this.course(), this.now));
-  readonly modality = computed(() => getCourseModality(this.course(), this.now));
+  readonly status = computed(() => getCourseStatus(this.course()));
+  readonly modality = computed(() => getCourseModality(this.course()));
   readonly statusColor = computed(() => getCourseStatusColor(this.status()));
+  readonly modalityIcon = computed(() => getCourseModalityIcon(this.modality()));
 }
