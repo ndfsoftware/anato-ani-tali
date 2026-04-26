@@ -6,6 +6,9 @@ import { CurrencyPipe } from '@angular/common';
   standalone: true,
   imports: [CurrencyPipe],
   templateUrl: './course-price.html',
+  host: {
+    class: 'block w-full',
+  },
 })
 export class CoursePrice {
   price = input.required<number>();

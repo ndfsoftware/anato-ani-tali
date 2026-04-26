@@ -1,4 +1,4 @@
-<div class="flex mt-5 justify-center flex-col lg:flex-row gap-5 lg:w-5xl">
+<div class="flex mt-5 flex-col lg:flex-row gap-5">
   @for (plan of plans(); track plan.id) {
   <plan-detail-card [plan]="plan" />
   }

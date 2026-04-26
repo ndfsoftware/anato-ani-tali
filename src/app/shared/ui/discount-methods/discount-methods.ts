@@ -13,6 +13,9 @@ import { Plan } from '@app/core/interfaces/plan.interface';
   imports: [TitleCasePipe, CurrencyPipe],
   templateUrl: './discount-methods.html',
   standalone: true,
+  host: {
+    class: 'block w-full',
+  },
 })
 export class DiscountMethods {
   readonly DISCOUNT_TYPE = DISCOUNT_TYPE;

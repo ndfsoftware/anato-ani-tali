@@ -7,6 +7,9 @@ import { Payment, PaymentMethod } from '@app/core/interfaces/payment.interface';
   imports: [TitleCasePipe],
   templateUrl: './payment-methods.html',
   standalone: true,
+  host: {
+    class: 'block w-full',
+  },
 })
 export class PaymentMethods {
   payments = input.required<Payment[]>();

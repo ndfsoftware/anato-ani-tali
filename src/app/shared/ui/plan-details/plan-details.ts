@@ -6,6 +6,9 @@ import { PlanDetailCard } from './components/plan-detail-card/plan-detail-card';
   selector: 'plan-details',
   imports: [PlanDetailCard],
   templateUrl: './plan-details.html',
+  host: {
+    class: 'block w-full',
+  },
 })
 export class PlanDetails {
   plans = input.required<Plan[]>();
