@@ -2,6 +2,7 @@ import { CurrencyPipe, TitleCasePipe } from '@angular/common';
 import { Component, computed, input } from '@angular/core';
 import {
   Discount,
+  DISCOUNT_TYPE,
   DiscountPriceOption,
   DiscountViewModel,
 } from '@app/core/interfaces/discount.interface';
@@ -14,6 +15,7 @@ import { Plan } from '@app/core/interfaces/plan.interface';
   standalone: true,
 })
 export class DiscountMethods {
+  readonly DISCOUNT_TYPE = DISCOUNT_TYPE;
   discounts = input.required<Discount[]>();
   price = input<number | null>(null);
   plans = input<Plan[]>([]);
@@ -47,6 +49,7 @@ export class DiscountMethods {
     return this.discounts().map((discount) => {
       return {
         id: discount.id,
+        type: discount.type,
         label: discount.label,
         percentage: discount.percentage,
         hasDiscount: discount.percentage > 0,

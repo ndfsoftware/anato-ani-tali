@@ -37,9 +37,9 @@ export class DiscountService {
     },
     {
       id: 5,
-      type: DISCOUNT_TYPE.INTENSIVO,
+      type: DISCOUNT_TYPE.FACUAMIGO,
       percentage: 15,
-      label: 'Traé un facuamigo y obtengan un descuento cada uno del',
+      label: 'Traé un facuamigo y obtengan un descuento',
     },
     {
       id: 6,

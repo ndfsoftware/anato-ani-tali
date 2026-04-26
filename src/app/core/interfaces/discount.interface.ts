@@ -2,6 +2,7 @@ export const DISCOUNT_TYPE = {
   PAYMENT: 'payment',
   GENERAL: 'general',
   INTENSIVO: 'intensivo',
+  FACUAMIGO: 'facuamigo',
 };
 export type DiscountType = (typeof DISCOUNT_TYPE)[keyof typeof DISCOUNT_TYPE];
 
@@ -21,6 +22,7 @@ export interface DiscountPriceOption {
 
 export interface DiscountViewModel {
   id: number;
+  type: DiscountType;
   label: string;
   percentage: number;
   hasDiscount: boolean;
