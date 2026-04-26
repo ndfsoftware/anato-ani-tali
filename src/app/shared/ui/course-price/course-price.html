@@ -1,0 +1,19 @@
+<div class="w-full">
+    <div class="bg-white/80 p-4 md:p-5 border border-base-200 rounded-lg w-full mt-5">
+        <div class="mx-auto">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+                <div>
+                    <p class="text-xs uppercase tracking-wide text-primary font-bold mb-1">Precio</p>
+                    <span class="text-3xl font-semibold text-card-text">
+                        {{ price() | currency:'ARS':'symbol':'1.0-0' }}
+                    </span>
+                </div>
+
+                <div class="flex gap-1.5 items-center">
+                    <span class="material-symbols-outlined text-primary">account_balance_wallet</span>
+                    <span class="font-light text-card-text">Transferencia</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

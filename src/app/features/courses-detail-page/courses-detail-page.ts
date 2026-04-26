@@ -17,10 +17,20 @@ import { Badge } from '@app/shared/ui/badge/badge';
 import { TitleCasePipe } from '@angular/common';
 import { COURSE_STATUS } from '@app/core/interfaces/course-status';
 import { DiscountMethods } from '@app/shared/ui/discount-methods/discount-methods';
+import { COURSE_TYPE } from '../courses-page/interfaces/course.interface';
+import { CoursePrice } from '@app/shared/ui/course-price/course-price';
 
 @Component({
   selector: 'courses-detail-page',
-  imports: [PaymentMethods, PlanDetails, CoursesDetailCard, Badge, TitleCasePipe, DiscountMethods],
+  imports: [
+    PaymentMethods,
+    PlanDetails,
+    CoursesDetailCard,
+    Badge,
+    TitleCasePipe,
+    DiscountMethods,
+    CoursePrice,
+  ],
   templateUrl: './courses-detail-page.html',
 })
 export default class CoursesDetailPage {
@@ -37,4 +47,5 @@ export default class CoursesDetailPage {
   readonly statusIconClasses = computed(() => getCourseStatusIconClasses(this.status()));
   readonly modalityIcon = computed(() => getCourseModalityIcon(this.modality()));
   readonly courseStatus = COURSE_STATUS;
+  readonly courseType = COURSE_TYPE;
 }

@@ -18,6 +18,10 @@
   <app-discount-methods class="w-full lg:w-5xl" [discounts]="course()?.discounts!" [price]="course()?.price ?? null"
     [plans]="course()?.plans ?? []" />
   }
+  @if(course()?.type === courseType.CLASE) {
+  <app-course-price [price]="course()?.price!" class="w-full lg:w-5xl" />
+  }@else {
   <app-payment-methods class="w-full lg:w-5xl" [payments]="course()?.payments ?? []" />
+  }
 
 </div>
