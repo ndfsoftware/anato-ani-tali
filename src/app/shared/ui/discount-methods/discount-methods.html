@@ -5,7 +5,7 @@
                 <h3 class="text-xl md:text-2xl font-semibold italic text-primary mb-2 text-center">
                     {{ 'Descuentos disponibles' | titlecase }}
                 </h3>
-                <h3 class="font-bold text-primary mb-4 text-center text-red-500">Los Descuentos no son Acumulables</h3>
+                <h3 class="font-bold mb-4 text-center text-red-500">Los Descuentos no son Acumulables</h3>
                 <div class="grid gap-3">
                     @for (discount of discountCards(); track discount.id) {
                     <article
@@ -43,7 +43,7 @@
                                         {{ priceOption.originalPrice | currency:'ARS':'symbol':'1.0-0' }}
                                     </span>
                                     }
-                                    <div class="flex md:flex-col">
+                                    <div class="flex flex-col items-center">
                                         <span class="text-2xl font-semibold text-card-text">
                                             {{ priceOption.finalPrice | currency:'ARS':'symbol':'1.0-0' }}
                                         </span>
