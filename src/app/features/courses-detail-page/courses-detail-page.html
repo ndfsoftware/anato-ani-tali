@@ -15,7 +15,8 @@
   <plan-details [plans]="course()?.plans!" />
   }
   @if(course()?.discounts?.length) {
-  <app-discount-methods [discounts]="course()?.discounts!" [price]="course()?.price!" />
+  <app-discount-methods class="w-full lg:w-5xl" [discounts]="course()?.discounts!" [price]="course()?.price ?? null"
+    [plans]="course()?.plans ?? []" />
   }
   <app-payment-methods class="w-full lg:w-5xl" [payments]="course()?.payments ?? []" />
 

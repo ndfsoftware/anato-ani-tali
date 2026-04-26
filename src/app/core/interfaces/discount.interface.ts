@@ -12,3 +12,18 @@ export interface Discount {
   percentage: number;
   label: string;
 }
+
+export interface DiscountPriceOption {
+  label: string;
+  originalPrice: number;
+  finalPrice: number;
+}
+
+export interface DiscountViewModel {
+  id: number;
+  label: string;
+  percentage: number;
+  hasDiscount: boolean;
+  hasPrice: boolean;
+  priceOptions: DiscountPriceOption[];
+}

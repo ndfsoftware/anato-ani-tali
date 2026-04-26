@@ -26,14 +26,14 @@ export class DiscountService {
       type: DISCOUNT_TYPE.PAYMENT,
       paymentMethodId: 3,
       percentage: 0,
-      label: 'en hasta 3 cuotas',
+      label: 'en hasta 3 pagos',
     },
     {
       id: 4,
       type: DISCOUNT_TYPE.INTENSIVO,
       paymentMethodId: 3,
       percentage: 0,
-      label: 'en hasta 2 cuotas',
+      label: 'en hasta 2 pagos',
     },
     {
       id: 5,
