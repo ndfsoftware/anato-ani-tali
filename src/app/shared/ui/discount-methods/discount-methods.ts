@@ -34,7 +34,7 @@ export class DiscountMethods {
 
     return [
       {
-        label: 'Precio del curso',
+        label: 'Precio',
         originalPrice: price,
         finalPrice: price,
       },
