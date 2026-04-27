@@ -1,6 +1,12 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Component, inject, input, output, PLATFORM_ID } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  ReactiveFormsModule,
+  ValidationErrors,
+  Validators,
+} from '@angular/forms';
 import { ContactEmailService } from '@app/core/services/contact-email.service';
 
 @Component({
@@ -10,8 +16,10 @@ import { ContactEmailService } from '@app/core/services/contact-email.service';
   templateUrl: './contact-form.html',
 })
 export class ContactForm {
-  private static readonly FULL_NAME_PATTERN = /^[A-Za-zÀ-ÿ]+(?:[ '\-][A-Za-zÀ-ÿ]+)*$/;
+  private static readonly FULL_NAME_PATTERN = /^\p{L}+(?:[ '\-]\p{L}+)*$/u;
   private static readonly PHONE_PATTERN = /^[0-9()+\-\s]{6,20}$/;
+  private static readonly EMAIL_PATTERN =
+    /^[A-Z0-9._%+-]+@[A-Z0-9-]+(?:\.[A-Z0-9-]+)*\.[A-Z]{2,6}(?:\.[A-Z]{2})?$/i;
 
   readonly subject = input('Consulta general');
   readonly submitted = output<void>();
@@ -33,10 +41,20 @@ export class ContactForm {
         Validators.pattern(ContactForm.FULL_NAME_PATTERN),
       ],
     ],
-    email: ['', [Validators.required, Validators.email]],
+    email: ['', [Validators.required, Validators.email, ContactForm.emailDomainValidator]],
     phone: ['', [Validators.required, Validators.pattern(ContactForm.PHONE_PATTERN)]],
     message: ['', [Validators.required, Validators.minLength(10)]],
   });
+
+  private static emailDomainValidator(control: AbstractControl): ValidationErrors | null {
+    const value = `${control.value ?? ''}`.trim();
+
+    if (!value) {
+      return null;
+    }
+
+    return ContactForm.EMAIL_PATTERN.test(value) ? null : { emailDomain: true };
+  }
 
   isInvalid(controlName: 'fullName' | 'email' | 'phone' | 'message'): boolean {
     const control = this.form.controls[controlName];
@@ -88,7 +106,7 @@ export class ContactForm {
       });
       this.submitted.emit();
     } catch {
-      this.errorMessage = 'No pudimos enviar la consulta. Probá nuevamente en unos minutos.';
+      this.errorMessage = 'No pudimos enviar la consulta. Proba nuevamente en unos minutos.';
     } finally {
       this.isSending = false;
     }
