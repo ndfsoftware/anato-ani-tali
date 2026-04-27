@@ -27,7 +27,11 @@ export class ContactForm {
   readonly form = this.fb.nonNullable.group({
     fullName: [
       '',
-      [Validators.required, Validators.minLength(3), Validators.pattern(ContactForm.FULL_NAME_PATTERN)],
+      [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.pattern(ContactForm.FULL_NAME_PATTERN),
+      ],
     ],
     email: ['', [Validators.required, Validators.email]],
     phone: ['', [Validators.required, Validators.pattern(ContactForm.PHONE_PATTERN)]],
@@ -56,7 +60,7 @@ export class ContactForm {
 
     const missingConfig = this.contactEmailService.getMissingConfig();
     if (missingConfig.length) {
-      this.errorMessage = `Faltan variables de EmailJS: ${missingConfig.join(', ')}. Reinicia el servidor luego de editar el .env.`;
+      this.errorMessage = `Error en el servicio de emails.`;
       return;
     }
 

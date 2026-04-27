@@ -10,6 +10,30 @@ To start a local development server, run:
 ng serve
 ```
 
+For EmailJS runtime config, set these environment variables before running the app:
+
+```bash
+NG_APP_CONTACT_EMAIL
+NG_APP_EMAILJS_PUBLIC_KEY
+NG_APP_EMAILJS_SERVICE_ID
+NG_APP_EMAILJS_TEMPLATE_ID
+```
+
+PowerShell example:
+
+```powershell
+$env:NG_APP_EMAILJS_PUBLIC_KEY = "your_public_key"
+$env:NG_APP_EMAILJS_SERVICE_ID = "service_xxxxxxx"
+$env:NG_APP_EMAILJS_TEMPLATE_ID = "template_xxxxxxx"
+ng serve
+```
+
+If you prefer `.env` and `.env.local`, use:
+
+```bash
+npm run start:env
+```
+
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
 ## Code scaffolding

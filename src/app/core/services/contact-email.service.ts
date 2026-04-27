@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import emailjs from '@emailjs/browser';
-import { environment } from '@env/environment';
+import { RUNTIME_CONFIG } from '@app/core/config/runtime-config';
 
 export interface ContactEmailPayload {
   subject: string;
@@ -14,10 +14,11 @@ export interface ContactEmailPayload {
   providedIn: 'root',
 })
 export class ContactEmailService {
-  private readonly contactEmail = environment.CONTACT_EMAIL;
-  private readonly serviceId = environment.EMAILJS_SERVICE_ID;
-  private readonly templateId = environment.EMAILJS_TEMPLATE_ID;
-  private readonly publicKey = environment.EMAILJS_PUBLIC_KEY;
+  private readonly runtimeConfig = inject(RUNTIME_CONFIG);
+  private readonly contactEmail = this.runtimeConfig.contactEmail;
+  private readonly serviceId = this.runtimeConfig.emailjsServiceId;
+  private readonly templateId = this.runtimeConfig.emailjsTemplateId;
+  private readonly publicKey = this.runtimeConfig.emailjsPublicKey;
 
   getMissingConfig(): string[] {
     const missing: string[] = [];
