@@ -18,14 +18,14 @@
   <app-discount-methods [discounts]="course()?.discounts!" [price]="course()?.price ?? null"
     [plans]="course()?.plans ?? []" />
   }
-  @if(course()?.type === courseType.CLASE) {
-  <app-course-price [price]="course()?.price!" />
-  }@else {
   <div class="w-full mt-5 flex justify-center">
     <button type="button" class="btn btn-primary w-full md:w-auto" (click)="openContactModal()">
       Consultar por este curso
     </button>
   </div>
+  @if(course()?.type === courseType.CLASE) {
+  <app-course-price [price]="course()?.price!" />
+  }@else {
   <app-payment-methods [payments]="course()?.payments ?? []" />
   }
 </div>
