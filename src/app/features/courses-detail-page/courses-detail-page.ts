@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { CourseService } from '../courses-page/services/course.service';
 import { ActivatedRoute } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -19,6 +19,7 @@ import { COURSE_STATUS } from '@app/core/interfaces/course-status';
 import { DiscountMethods } from '@app/shared/ui/discount-methods/discount-methods';
 import { COURSE_TYPE } from '../courses-page/interfaces/course.interface';
 import { CoursePrice } from '@app/shared/ui/course-price/course-price';
+import { ContactForm } from '@app/shared/ui/contact-form/contact-form';
 
 @Component({
   selector: 'courses-detail-page',
@@ -30,6 +31,7 @@ import { CoursePrice } from '@app/shared/ui/course-price/course-price';
     TitleCasePipe,
     DiscountMethods,
     CoursePrice,
+    ContactForm,
   ],
   templateUrl: './courses-detail-page.html',
 })
@@ -48,4 +50,14 @@ export default class CoursesDetailPage {
   readonly modalityIcon = computed(() => getCourseModalityIcon(this.modality()));
   readonly courseStatus = COURSE_STATUS;
   readonly courseType = COURSE_TYPE;
+  readonly isContactModalOpen = signal(false);
+  readonly contactSubject = computed(() => this.course()?.title ?? 'Consulta general');
+
+  openContactModal(): void {
+    this.isContactModalOpen.set(true);
+  }
+
+  closeContactModal(): void {
+    this.isContactModalOpen.set(false);
+  }
 }
