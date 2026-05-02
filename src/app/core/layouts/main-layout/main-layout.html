@@ -1,6 +1,9 @@
 <div class="min-h-screen flex flex-col">
   <app-navbar />
-  <section class="flex-1 w-full h-full p-4 mt-20 mb-11">
+  <section
+    class="flex-1 w-full h-full p-4 mt-10 mb-10 bg-cover bg-center bg-no-repeat"
+    [class]="pageBackgroundClass()"
+  >
     <router-outlet />
   </section>
   <app-footer />

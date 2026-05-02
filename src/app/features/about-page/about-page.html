@@ -1,13 +1,13 @@
-<section>
+<section class="px-4 md:px-6 py-8">
   <!-- HERO -->
-  <div class="overflow-hidden text-center bg-base-100">
-    <h1 class="text-5xl italic font-semibold flex flex-1 justify-center text-primary">Sobre Nosotras</h1>
+  <div class="overflow-hidden text-center">
+    <h1 class="text-5xl italic font-semibold flex flex-1 justify-center text-primary">
+      Sobre Nosotras
+    </h1>
     <h1 class="text-5xl font-normal text-neutral leading-tight mb-2 mt-4">
       Tali <em class="text-primary">&</em> Ani
     </h1>
-    <p class="text-xl font-light text-neutral">
-      Docentes de Anatomía · Apasionadas por enseñar
-    </p>
+    <p class="text-xl font-light text-neutral">Docentes de Anatomía · Apasionadas por enseñar</p>
   </div>
 
   <!-- AVATAR CARDS -->
@@ -15,15 +15,14 @@
     @for (teacher of teachers; track teacher.name) {
     <div class="bg-white/80 border border-base-200 rounded-lg text-center w-[390px] p-4">
       <div
-        class="w-17 h-17 rounded-full {{teacher.bgColor}} flex items-center justify-center mx-auto mb-4 border-[3px]">
-        <span class="text-2xl ">{{ teacher.initial }}</span>
+        class="w-17 h-17 rounded-full {{teacher.bgColor}} flex items-center justify-center mx-auto mb-4 border-[3px]"
+      >
+        <span class="text-2xl">{{ teacher.initial }}</span>
       </div>
       <h1 class="text-3xl text-primary mb-1 font-semibold">{{ teacher.alias }}</h1>
-      <h3 class="text-xl text-card-text italic"> {{teacher.name}}</h3>
+      <h3 class="text-xl text-card-text italic">{{teacher.name}}</h3>
       <div class="flex justify-center gap-1 items-center">
-        <span class="material-symbols-outlined text-primary">
-          school
-        </span>
+        <span class="material-symbols-outlined text-primary"> school </span>
         <p class="text-lg text-card-text">{{ teacher.role }}</p>
       </div>
     </div>
@@ -37,15 +36,15 @@
     </h1>
 
     <p class="font mb-5 text-neutral">
-      Somos Tali y Ani, docentes de anato desde hace tanto que ya perdimos la cuenta 🫣
-      Como ustedes, un día fuimos ingresantes y alumnas de primer año con
+      Somos Tali y Ani, docentes de anato desde hace tanto que ya perdimos la cuenta 🫣 Como
+      ustedes, un día fuimos ingresantes y alumnas de primer año con
       <strong class="font-medium text-primary">todas las incertidumbres que eso conlleva.</strong>
     </p>
 
     <p class="font mb-5 text-neutral">
       Estuvimos muy emocionadas por nuestro primer día, pero como es natural en un ingresante,
-      tuvimos problemas en la organización de la materia, en no saber qué priorizar,
-      cómo estudiar todos los contenidos y, principalmente, que no se nos olvide.
+      tuvimos problemas en la organización de la materia, en no saber qué priorizar, cómo estudiar
+      todos los contenidos y, principalmente, que no se nos olvide.
     </p>
 
     <!-- QUOTE HIGHLIGHT -->

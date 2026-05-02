@@ -1,34 +1,36 @@
-<div class="w-full max-w-5xl mx-auto px-4 md:px-6 flex flex-col items-center">
-  <h1 class="text-4xl md:text-5xl italic font-semibold flex flex-1 justify-center text-primary mb-7">{{ course()?.title
-    }}</h1>
-  <div class="flex gap-5 mb-5">
-    @if (status() !== courseStatus.FINALIZADO) {
-    <app-badge [title]="status() | titlecase" [icon]="statusIcon()" [iconClasses]="statusIconClasses()" size="lg"
-      type="primary" classes="bg-primary text-primary-content border-primary" />
-    }
+<section class="px-4 md:px-6 py-8">
+  <div class="w-full max-w-5xl mx-auto flex flex-col items-center">
+    <h1 class="text-4xl md:text-5xl italic font-semibold flex flex-1 justify-center text-primary mb-7">{{ course()?.title
+      }}</h1>
+    <div class="flex gap-5 mb-5">
+      @if (status() !== courseStatus.FINALIZADO) {
+      <app-badge [title]="status() | titlecase" [icon]="statusIcon()" [iconClasses]="statusIconClasses()" size="lg"
+        type="primary" classes="bg-primary text-primary-content border-primary" />
+      }
 
-    <app-badge [title]="modality() | titlecase" [icon]="modalityIcon()" size="lg" type="primary"
-      classes="bg-primary text-primary-content border-primary" />
+      <app-badge [title]="modality() | titlecase" [icon]="modalityIcon()" size="lg" type="primary"
+        classes="bg-primary text-primary-content border-primary" />
+    </div>
+    <courses-detail-card [course]="course()!" />
+    @if(course()?.plans?.length) {
+    <plan-details [plans]="course()?.plans!" />
+    }
+    @if(course()?.discounts?.length) {
+    <app-discount-methods [discounts]="course()?.discounts!" [price]="course()?.price ?? null"
+      [plans]="course()?.plans ?? []" />
+    }
+    <div class="w-full mt-5 flex justify-center">
+      <button type="button" class="btn btn-primary w-full md:w-auto" (click)="openContactModal()">
+        Consultar por este curso
+      </button>
+    </div>
+    @if(course()?.type === courseType.CLASE) {
+    <app-course-price [price]="course()?.price!" />
+    }@else {
+    <app-payment-methods [payments]="course()?.payments ?? []" />
+    }
   </div>
-  <courses-detail-card [course]="course()!" />
-  @if(course()?.plans?.length) {
-  <plan-details [plans]="course()?.plans!" />
-  }
-  @if(course()?.discounts?.length) {
-  <app-discount-methods [discounts]="course()?.discounts!" [price]="course()?.price ?? null"
-    [plans]="course()?.plans ?? []" />
-  }
-  <div class="w-full mt-5 flex justify-center">
-    <button type="button" class="btn btn-primary w-full md:w-auto" (click)="openContactModal()">
-      Consultar por este curso
-    </button>
-  </div>
-  @if(course()?.type === courseType.CLASE) {
-  <app-course-price [price]="course()?.price!" />
-  }@else {
-  <app-payment-methods [payments]="course()?.payments ?? []" />
-  }
-</div>
+</section>
 
 @if (isContactModalOpen()) {
 <div class="fixed inset-0 z-50 flex items-center justify-center p-4">
