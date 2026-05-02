@@ -10,29 +10,29 @@ export const routes: Routes = [
       {
         path: '',
         loadComponent: () => import('@features/home-page/home-page'),
-        // data: { bgImageClass: "bg-[url('/assets/images/home.png')]" },
+        data: { bgImageClass: "md:bg-[url('/assets/images/home-3.png')] md:!bg-[center_-250px]" },
       },
       {
         path: 'about',
         loadComponent: () => import('@features/about-page/about-page'),
         data: {
-          bgImageClass: "md:bg-[url('/assets/images/cuerpo-entero.png')]",
+          bgImageClass: "md:bg-[url('/assets/images/cuerpo-entero-3.png')]",
         },
       },
       {
         path: 'faq',
         loadComponent: () => import('@features/faq-page/faq-page'),
-        data: { bgImageClass: "md:bg-[url('/assets/images/cuerpo-entero.png')]" },
+        data: { bgImageClass: "md:bg-[url('/assets/images/cuerpo-entero-3.png')]" },
       },
       {
         path: 'contact',
         loadComponent: () => import('@features/contact-page/contact-page'),
-        data: { bgImageClass: "md:bg-[url('/assets/images/cuerpo-entero.png')]" },
+        data: { bgImageClass: "md:bg-[url('/assets/images/cuerpo-entero-3.png')]" },
       },
       {
         path: 'courses/:slug',
         loadComponent: () => import('@features/courses-detail-page/courses-detail-page'),
-        data: { bgImageClass: "md:bg-[url('/assets/images/columna.png')]" },
+        data: { bgImageClass: "md:bg-[url('/assets/images/columna-2.png')]" },
       },
       {
         path: 'courses',
