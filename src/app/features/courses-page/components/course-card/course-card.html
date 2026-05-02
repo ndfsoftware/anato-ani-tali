@@ -1,8 +1,9 @@
 <div class="flex gap-7 mt-7 w-3xl">
   <div class="indicator indicator-center w-full h-full">
-
     @if(course().badge?.label) {
-    <span class="indicator-item badge badge-warning badge-lg font-bold">{{course().badge!.label}}</span>
+    <span class="indicator-item badge badge-warning badge-lg font-bold"
+      >{{course().badge!.label}}</span
+    >
     }
     <div class="card card-side w-full h-full bg-white/80 border border-base-200">
       <!-- <figure>
@@ -10,49 +11,50 @@
     </figure> -->
       <div class="card-body gap-2.5">
         <div class="flex justify-between flex-col md:flex-row gap-2.5">
-          <div class="flex gap-2.5 items-end ">
+          <div class="flex gap-2.5 items-end">
             <h1 class="text-2xl font-semibold text-primary">{{ course().title | titlecase }}</h1>
             @if(status() !== courseStatus.FINALIZADO) {
-            <h2 class="font-semibold" [class]="statusColor()">
-              {{status()}}
-            </h2>
+            <h2 class="font-semibold" [class]="statusColor()">{{status()}}</h2>
             }
           </div>
           <div>
-            <app-badge [title]="modality() | titlecase" [icon]="modalityIcon()" size="lg" type="secondary" />
+            <app-badge
+              [title]="modality() | titlecase"
+              [icon]="modalityIcon()"
+              size="lg"
+              type="secondary"
+            />
           </div>
         </div>
-        <div>
-          {{course().description}}
-        </div>
+        <div>{{course().description}}</div>
 
         <div class="flex justify-between flex-col md:flex-row gap-2.5">
           <div class="flex flex-1 gap-2.5 justify-between md:justify-start">
+            @if(status() !== courseStatus.FINALIZADO) {
             <div class="flex gap-2.5 items-center">
-              <span class="material-symbols-outlined">
-                event
-              </span>
+              <span class="material-symbols-outlined"> event </span>
               <span>{{ course().startDate | date: 'mediumDate' }}</span>
             </div>
             <div class="flex items-center">
-              <span class="material-symbols-outlined">
-                arrow_right_alt
-              </span>
+              <span class="material-symbols-outlined"> arrow_right_alt </span>
             </div>
             <div class="flex gap-2.5 items-center">
-              <span class="material-symbols-outlined">
-                event
-              </span>
+              <span class="material-symbols-outlined"> event </span>
+
               <span>{{ course().endDate | date: 'mediumDate' }}</span>
             </div>
-          </div>
-          <div>
-            <a class="btn btn-primary btn-block rounded-lg font-light text-sm"
-              [routerLink]="['/courses', course().slug]">Más
-              Información</a>
+            }
           </div>
 
+          <div>
+            <a
+              class="btn btn-primary btn-block rounded-lg font-light text-sm"
+              [routerLink]="['/courses', course().slug]"
+              >Más Información</a
+            >
+          </div>
         </div>
       </div>
     </div>
   </div>
+</div>

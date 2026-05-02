@@ -1,36 +1,51 @@
 <div class="navbar bg-base-200 shadow-sm">
   <div class="navbar-start">
-    <div class="dropdown">
-      <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+    <div class="dropdown" [class.dropdown-open]="isDropdownOpen()">
+      <div #mobileMenuButton tabindex="0" role="button" class="btn btn-ghost lg:hidden" (click)="toggleDropdown()">
         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
           <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
         </svg>
       </div>
       <ul tabindex="-1" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-        <li><a [routerLink]="['/']" routerLinkActive="bg-secondary"
-            [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
+        <li>
+          <a [routerLink]="['/']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" (click)="closeDropdown()">Inicio</a>
         </li>
-        <li><a [routerLink]="['/courses']" routerLinkActive="bg-secondary">Cursos</a></li>
-        <li><a [routerLink]="['/contact']" routerLinkActive="bg-secondary">Contacto</a></li>
-        <li><a [routerLink]="['/faq']" routerLinkActive="bg-secondary">Preguntas Frecuentes</a></li>
-        <li><a [routerLink]="['/about']" routerLinkActive="bg-secondary">Nosotras</a></li>
+        <li>
+          <a [routerLink]="['/courses']" routerLinkActive="active-link" (click)="closeDropdown()">Cursos</a>
+        </li>
+        <li>
+          <a [routerLink]="['/contact']" routerLinkActive="active-link" (click)="closeDropdown()">Contacto</a>
+        </li>
+        <li>
+          <a [routerLink]="['/faq']" routerLinkActive="active-link" (click)="closeDropdown()">Preguntas Frecuentes</a>
+        </li>
+        <li>
+          <a [routerLink]="['/about']" routerLinkActive="active-link" (click)="closeDropdown()">Nosotras</a>
+        </li>
       </ul>
     </div>
     <a class="btn btn-ghost text-xl" [routerLink]="'/'">AnatoAniTali</a>
   </div>
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1">
-      <li><a [routerLink]="['/']" routerLinkActive="bg-secondary" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
+      <li>
+        <a [routerLink]="['/']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
       </li>
-      <li><a [routerLink]=" ['/courses']" routerLinkActive="bg-secondary">Cursos</a></li>
-      <li><a [routerLink]="['/contact']" routerLinkActive="bg-secondary">Contacto</a></li>
-      <li><a [routerLink]="['/faq']" routerLinkActive="bg-secondary">Preguntas Frecuentes</a></li>
-      <li><a [routerLink]="['/about']" routerLinkActive="bg-secondary" class="">Nosotras</a></li>
+      <li>
+        <a [routerLink]="['/courses']" routerLinkActive="active-link">Cursos</a>
+      </li>
+      <li>
+        <a [routerLink]="['/contact']" routerLinkActive="active-link">Contacto</a>
+      </li>
+      <li>
+        <a [routerLink]="['/faq']" routerLinkActive="active-link">Preguntas Frecuentes</a>
+      </li>
+      <li>
+        <a [routerLink]="['/about']" routerLinkActive="active-link">Nosotras</a>
+      </li>
     </ul>
-    <!-- <a [routerLink]="['/about']" routerLinkActive #rla="routerLinkActive"
-      [style.border-bottom]="rla.isActive ? '1px solid white' : 'none'">Nosotras</a> -->
   </div>
-  <div class=" navbar-end">
+  <div class="navbar-end">
     <a class="btn btn-ghost" [routerLink]="['admin/login']">Ingresar</a>
   </div>
 </div>
