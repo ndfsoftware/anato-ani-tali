@@ -1,24 +1,28 @@
-<div class="max-w-4xl mx-auto px-4">
-  <div class="text-center mb-10">
-    <h1 class="text-5xl italic font-semibold flex flex-1 justify-center text-primary mb-7">
-      Preguntas Frecuentes
-    </h1>
-    <p class="text-neutral/80 text-lg">Resolvemos tus dudas principales sobre el curso</p>
-  </div>
-
-  <div class="flex flex-col gap-4">
-    @for (faq of faqs; track faq.question; let isFirst = $first) {
-    <div class="collapse collapse-plus bg-base-200 shadow-sm transition-all hover:shadow-md">
-      <input type="radio" name="faq-accordion" [checked]="isFirst" />
-
-      <div class="collapse-title text-lg md:text-xl font-semibold text-neutral">
-        {{ faq.question }}
-      </div>
-
-      <div class="collapse-content text-base-content/90 leading-relaxed">
-        <p>{{ faq.answer }}</p>
-      </div>
+<section class="relative px-4 md:px-6 py-8">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-10">
+      <h1 class="text-5xl italic font-semibold flex flex-1 justify-center text-primary mb-7">
+        Preguntas Frecuentes
+      </h1>
+      <p class="text-neutral/80 text-lg">Resolvemos tus dudas principales sobre el curso</p>
     </div>
-    }
+
+    <div class="flex flex-col gap-4">
+      @for (faq of faqs; track faq.question; let isFirst = $first) {
+      <div
+        class="collapse collapse-plus bg-white/80 shadow-sm transition-all hover:shadow-md border border-base-200"
+      >
+        <input type="radio" name="faq-accordion" [checked]="isFirst" />
+
+        <div class="collapse-title text-lg md:text-xl font-semibold text-neutral">
+          <p class="text-primary">{{ faq.question }}</p>
+        </div>
+
+        <div class="collapse-content text-base-content/90 leading-relaxed">
+          <p class="text-card-text">{{ faq.answer }}</p>
+        </div>
+      </div>
+      }
+    </div>
   </div>
-</div>
+</section>

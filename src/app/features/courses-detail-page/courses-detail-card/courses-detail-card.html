@@ -12,31 +12,24 @@
           <app-badge [title]="modality() | titlecase" size="lg" type="secondary" />
         </div> -->
       </div>
-      <div>
-        {{course().description}}
-      </div>
-
+      <div>{{course().description}}</div>
+      @if(status() !== courseStatus.FINALIZADO) {
       <div class="flex justify-between flex-col md:flex-row gap-2.5">
         <div class="flex flex-1 gap-2.5 justify-between md:justify-start">
           <div class="flex gap-2.5 items-center">
-            <span class="material-symbols-outlined">
-              event
-            </span>
+            <span class="material-symbols-outlined"> event </span>
             <span>{{ course().startDate | date: 'mediumDate' }}</span>
           </div>
           <div class="flex items-center">
-            <span class="material-symbols-outlined">
-              arrow_right_alt
-            </span>
+            <span class="material-symbols-outlined"> arrow_right_alt </span>
           </div>
           <div class="flex gap-2.5 items-center">
-            <span class="material-symbols-outlined">
-              event
-            </span>
+            <span class="material-symbols-outlined"> event </span>
             <span>{{ course().endDate | date: 'mediumDate' }}</span>
           </div>
         </div>
       </div>
+      }
     </div>
   </div>
 </div>
