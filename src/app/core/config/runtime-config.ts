@@ -2,7 +2,6 @@ import { isPlatformServer } from '@angular/common';
 import { inject, InjectionToken, makeStateKey, PLATFORM_ID, TransferState } from '@angular/core';
 
 export interface RuntimeConfig {
-  contactEmail: string;
   emailjsPublicKey: string;
   emailjsServiceId: string;
   emailjsTemplateId: string;
@@ -11,7 +10,6 @@ export interface RuntimeConfig {
 type RuntimeEnvValues = Record<string, string | undefined>;
 
 const DEFAULT_RUNTIME_CONFIG: RuntimeConfig = {
-  contactEmail: '',
   emailjsPublicKey: '',
   emailjsServiceId: '',
   emailjsTemplateId: '',
@@ -47,7 +45,6 @@ function readRuntimeValue(key: string): string | undefined {
 
 function resolveRuntimeConfig(): RuntimeConfig {
   return {
-    contactEmail: readRuntimeValue('NG_APP_CONTACT_EMAIL') ?? DEFAULT_RUNTIME_CONFIG.contactEmail,
     emailjsPublicKey: readRuntimeValue('NG_APP_EMAILJS_PUBLIC_KEY') ?? '',
     emailjsServiceId: readRuntimeValue('NG_APP_EMAILJS_SERVICE_ID') ?? '',
     emailjsTemplateId: readRuntimeValue('NG_APP_EMAILJS_TEMPLATE_ID') ?? '',
