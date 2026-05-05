@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Faq } from '@app/core/interfaces/faq.interface';
+import { SeoService } from '@app/core/services/seo.service';
 
 @Component({
   selector: 'faq-page',
@@ -8,27 +9,48 @@ import { Faq } from '@app/core/interfaces/faq.interface';
   templateUrl: './faq-page.html',
 })
 export default class FaqPage {
+  constructor(private readonly seoService: SeoService) {
+    this.seoService.setPageSeo({
+      title: 'Preguntas Frecuentes de Cursos de Anatomia | AnatoAniTali',
+      description:
+        'Respondemos las dudas mas comunes sobre nuestros cursos de anatomia para Medicina UBA: catedras, clases grabadas, modalidad y preparacion para examenes.',
+      path: '/faq',
+    });
+
+    this.seoService.setJsonLd('faq-page', {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: this.faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    });
+  }
+
   faqs: Faq[] = [
     {
-      question: '¿El curso es para todas las cátedras?',
+      question: 'El curso es para todas las catedras?',
       answer:
-        '¡Sí! No importa si sos de cátedra 1, 2 o 3, nosotras damos el contenido para todas las cátedras, haciendo diferencias entre bibliografías y contenido específico de estas.',
+        'Si. El contenido esta pensado para estudiantes de Catedra 1, 2 y 3, con aclaraciones sobre bibliografia y enfoque de cada catedra.',
     },
     {
-      question: '¿Si no puedo conectarme a las clases en vivo, puedo verlas grabadas?',
+      question: 'Si no puedo conectarme en vivo, puedo ver las clases grabadas?',
       answer:
-        '¡Obvio! Siempre van a tener la opción de presenciar la clase en vivo, con el contenido actualizado del año, pero entendemos que no todos pueden acceder en un determinado horario, por lo que absolutamente TODAS nuestras clases son grabadas y subidas a un drive para que las puedas ver todas las veces que quieras.',
+        'Si. Todas las clases quedan grabadas para que puedas repasarlas cuando quieras y organizar tu estudio segun tus tiempos.',
     },
     {
-      question:
-        '¿El contenido del curso me alcanza para aprobar la materia o necesito otro material?',
+      question: 'El contenido del curso alcanza para aprobar anatomia?',
       answer:
-        'Nosotras siempre vamos a recomendar la utilización de la bibliografía oficial de cada cátedra, pero contamos con la tranquilidad de que en el curso les ofrecemos TODA la información (y más) que ustedes necesitan para cada trabajo práctico semanal como para rendir los parciales/finales. ¡El contenido del curso es más que suficiente!',
+        'El curso esta disenado para cubrir los temas centrales de la materia y acompanarte en parciales y final. Siempre recomendamos complementarlo con bibliografia oficial.',
     },
     {
-      question: '¿El curso es solamente para anatomía de la UBA?',
+      question: 'El curso es solamente para anatomia de la UBA?',
       answer:
-        'Nosotras nos enfocamos en la UBA pero también tenemos agenda abierta para otras universidades. ¡Contactate con nosotras y consultanos!',
+        'Nuestro foco principal es Medicina UBA, pero tambien ayudamos a estudiantes de otras universidades segun disponibilidad.',
     },
   ];
 }

@@ -6,6 +6,7 @@ export interface RuntimeConfig {
   emailjsPublicKey: string;
   emailjsServiceId: string;
   emailjsTemplateId: string;
+  siteUrl: string;
 }
 
 type RuntimeEnvValues = Record<string, string | undefined>;
@@ -15,6 +16,7 @@ const DEFAULT_RUNTIME_CONFIG: RuntimeConfig = {
   emailjsPublicKey: '',
   emailjsServiceId: '',
   emailjsTemplateId: '',
+  siteUrl: 'https://anatoanitali.com',
 };
 
 const RUNTIME_CONFIG_STATE_KEY = makeStateKey<RuntimeConfig>('runtime-config');
@@ -51,6 +53,7 @@ function resolveRuntimeConfig(): RuntimeConfig {
     emailjsPublicKey: readRuntimeValue('NG_APP_EMAILJS_PUBLIC_KEY') ?? '',
     emailjsServiceId: readRuntimeValue('NG_APP_EMAILJS_SERVICE_ID') ?? '',
     emailjsTemplateId: readRuntimeValue('NG_APP_EMAILJS_TEMPLATE_ID') ?? '',
+    siteUrl: readRuntimeValue('NG_APP_SITE_URL') ?? DEFAULT_RUNTIME_CONFIG.siteUrl,
   };
 }
 

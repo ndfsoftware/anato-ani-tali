@@ -1,0 +1,16 @@
+{
+  "name": "Anatomía con Ani y Tali",
+  "short_name": "AnatoAniTali",
+  "lang": "es-AR",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FEF5E4",
+  "theme_color": "#8B1A3A",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48 32x32 16x16",
+      "type": "image/x-icon"
+    }
+  ]
+}
