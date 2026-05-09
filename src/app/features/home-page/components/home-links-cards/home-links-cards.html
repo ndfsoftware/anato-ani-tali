@@ -1,0 +1,33 @@
+<section class="mt-10">
+  <h2 class="text-2xl md:text-3xl text-primary mb-6 font-semibold">Contenido Gratuito</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    @for (card of cards; track card.title) {
+    <article class="card bg-base-100 border border-base-200 shadow-sm overflow-hidden">
+      <figure class="h-48">
+        <img
+          [src]="card.image"
+          [alt]="card.title"
+          class="h-full w-full object-cover"
+          loading="lazy"
+        />
+      </figure>
+      <div class="card-body">
+        <h2 class="card-title text-primary max-w-3xl md:text-2xl font-semibold">
+          {{ card.title }}
+        </h2>
+        <p class="max-w-3xl mx-auto text-base md:text-lg">{{ card.description }}</p>
+        <div class="card-actions justify-end mt-2">
+          <a
+            class="btn btn-primary rounded-lg"
+            [href]="card.href"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Ver recurso
+          </a>
+        </div>
+      </div>
+    </article>
+    }
+  </div>
+</section>

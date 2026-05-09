@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SeoService } from '@app/core/services/seo.service';
+import { HomeLinksCards } from './components/home-links-cards/home-links-cards';
 @Component({
   selector: 'home-page',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, HomeLinksCards],
   templateUrl: './home-page.html',
 })
 export default class HomePage {

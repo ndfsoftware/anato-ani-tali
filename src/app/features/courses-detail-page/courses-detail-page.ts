@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { PaymentMethods } from '@app/shared/ui/payment-methods/payment-methods';
 import { PlanDetails } from '@app/shared/ui/plan-details/plan-details';
-import { CoursesDetailCard } from './courses-detail-card/courses-detail-card';
+import { CoursesDetailCard } from './components/courses-detail-card/courses-detail-card';
 import {
   getCourseStatus,
   getCourseModality,
