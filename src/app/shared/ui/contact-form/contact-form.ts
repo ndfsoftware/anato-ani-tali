@@ -29,6 +29,7 @@ export class ContactForm {
   private readonly contactEmailService = inject(ContactEmailService);
 
   isSending = false;
+  formSubmitted = false;
   errorMessage = '';
   successMessage = '';
 
@@ -57,18 +58,17 @@ export class ContactForm {
   }
 
   isInvalid(controlName: 'fullName' | 'email' | 'phone' | 'message'): boolean {
-    const control = this.form.controls[controlName];
-    return control.invalid && (control.touched || this.form.touched);
+    return this.formSubmitted && this.form.controls[controlName].invalid;
   }
 
   hasError(controlName: 'fullName' | 'email' | 'phone' | 'message', errorKey: string): boolean {
-    const control = this.form.controls[controlName];
-    return !!control.errors?.[errorKey] && (control.touched || this.form.touched);
+    return this.formSubmitted && !!this.form.controls[controlName].errors?.[errorKey];
   }
 
   async onSubmit(): Promise<void> {
+    this.formSubmitted = true;
+
     if (this.form.invalid) {
-      this.form.markAllAsTouched();
       return;
     }
 
@@ -97,6 +97,7 @@ export class ContactForm {
         message: formValue.message,
       });
 
+      this.formSubmitted = false;
       this.successMessage = 'Consulta enviada correctamente.';
       this.form.reset({
         fullName: '',
