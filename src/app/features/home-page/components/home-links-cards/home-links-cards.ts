@@ -14,7 +14,7 @@ export class HomeLinksCards {
     {
       title: 'Introduccion',
       description: 'Accede al material inicial para organizar tu cursada desde el primer dia.',
-      image: '/assets/images/home.png',
+      image: '/assets/images/home-3.png',
       href: this.runtimeConfig.introduction,
     },
     {
