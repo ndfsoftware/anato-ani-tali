@@ -1,5 +1,4 @@
 import { Component, computed, inject, input } from '@angular/core';
-
 import { DatePipe, TitleCasePipe } from '@angular/common';
 import { Badge } from '@app/shared/ui/badge/badge';
 import { COURSE_TYPE, CourseDetail } from '../../interfaces/course.interface';
@@ -8,7 +7,8 @@ import {
   getCourseModality,
   getCourseModalityIcon,
   getCourseStatus,
-  getCourseStatusColor,
+  getCourseStatusIcon,
+  getCourseStatusIconClasses,
 } from '@app/core/utils/course.utils';
 import { COURSE_STATUS } from '@app/core/interfaces/course-status';
 @Component({
@@ -25,6 +25,7 @@ export class CourseCard {
 
   readonly status = computed(() => getCourseStatus(this.course()));
   readonly modality = computed(() => getCourseModality(this.course()));
-  readonly statusColor = computed(() => getCourseStatusColor(this.status()));
   readonly modalityIcon = computed(() => getCourseModalityIcon(this.modality()));
+  readonly statusIcon = computed(() => getCourseStatusIcon(this.status()));
+  readonly statusIconClasses = computed(() => getCourseStatusIconClasses(this.status()));
 }

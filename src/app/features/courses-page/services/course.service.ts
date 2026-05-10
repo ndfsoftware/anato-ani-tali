@@ -65,7 +65,7 @@ export class CourseService {
       planIds: [],
       discountsIds: [5],
       paymentsIds: [1, 2],
-      modality: STUDY_MODALITY.ASINCRONICO,
+      modality: STUDY_MODALITY.SINCRONICO,
       type: COURSE_TYPE.INTENSIVO_PARCIAL,
     },
     {

@@ -9,11 +9,12 @@
           <div class="flex gap-2.5 flex-col lg:flex-row">
             <h2 class="text-2xl font-semibold text-primary text-center md:text-left">{{ course().title | titlecase }}
             </h2>
-            @if(status() !== courseStatus.FINALIZADO) {
-            <h3 class="font-semibold flex items-end" [class]="statusColor()">{{status()}}</h3>
-            }
           </div>
-          <div>
+          <div class="flex justify-center md:justify-end gap-2.5">
+            @if (status() !== courseStatus.FINALIZADO) {
+            <app-badge [title]="status() | titlecase" [icon]="statusIcon()" [iconClasses]="statusIconClasses()"
+              size="lg" type="secondary" />
+            }
             <app-badge [title]="modality() | titlecase" [icon]="modalityIcon()" size="lg" type="secondary" />
           </div>
         </div>
