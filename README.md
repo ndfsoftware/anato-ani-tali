@@ -1,83 +1,77 @@
-# AnatoAniTali
+# Anatomía con Ani y Tali
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.5.
+Sitio web para cursos de anatomía orientados a estudiantes de medicina de la UBA. Construido con Angular 21 + SSR, Tailwind CSS v4 y DaisyUI.
 
-## Development server
+## Stack
 
-To start a local development server, run:
+- **Framework:** Angular 21 (con SSR via `@angular/ssr`)
+- **Package manager:** Bun
+- **Estilos:** Tailwind CSS v4 + DaisyUI
+- **Email:** EmailJS
+- **Tests:** Vitest
 
-```bash
-ng serve
-```
+## Requisitos previos
 
-For EmailJS runtime config, set these environment variables before running the app:
+- [Bun](https://bun.sh/) >= 1.3.13
 
-```bash
-NG_APP_CONTACT_EMAIL
-NG_APP_EMAILJS_PUBLIC_KEY
-NG_APP_EMAILJS_SERVICE_ID
-NG_APP_EMAILJS_TEMPLATE_ID
-```
-
-PowerShell example:
-
-```powershell
-$env:NG_APP_EMAILJS_PUBLIC_KEY = "your_public_key"
-$env:NG_APP_EMAILJS_SERVICE_ID = "service_xxxxxxx"
-$env:NG_APP_EMAILJS_TEMPLATE_ID = "template_xxxxxxx"
-ng serve
-```
-
-If you prefer `.env` and `.env.local`, use:
+## Instalación
 
 ```bash
-npm run start:env
+bun install
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Variables de entorno
 
-## Code scaffolding
+Crear un archivo `.env` en la raíz del proyecto (ver `.env.example`):
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+```env
+NG_APP_CONTACT_EMAIL=tu_email
+NG_APP_EMAILJS_PUBLIC_KEY=tu_public_key
+NG_APP_EMAILJS_SERVICE_ID=service_xxxxxxx
+NG_APP_EMAILJS_TEMPLATE_ID=template_xxxxxxx
+NG_APP_SITE_URL=https://anatoanitali.com
+NG_APP_OVERVIEW=https://drive.google.com/...
+NG_APP_INTRODUCTION=https://drive.google.com/...
+```
+
+| Variable | Descripción |
+|---|---|
+| `NG_APP_CONTACT_EMAIL` | Email de destino del formulario de contacto |
+| `NG_APP_EMAILJS_PUBLIC_KEY` | Public key de EmailJS |
+| `NG_APP_EMAILJS_SERVICE_ID` | ID del servicio de EmailJS |
+| `NG_APP_EMAILJS_TEMPLATE_ID` | ID del template de EmailJS |
+| `NG_APP_SITE_URL` | URL pública del sitio (usada para SEO/meta tags) |
+| `NG_APP_OVERVIEW` | URL de Drive con el resumen/overview del curso |
+| `NG_APP_INTRODUCTION` | URL de Drive con el video/material de introducción |
+
+## Comandos
+
+| Comando | Descripción |
+|---|---|
+| `bun run start` | Dev server en `http://localhost:4200` (carga `.env`) |
+| `bun run build` | Build de producción en `dist/` |
+| `bun run serve:ssr:anato-ani-tali` | Servidor SSR desde el build (`dist/`) |
+| `bun run watch` | Build en modo watch (desarrollo) |
+| `bun run test` | Ejecuta los tests con Vitest |
+
+## Rutas
+
+| Ruta | Descripción |
+|---|---|
+| `/` | Home |
+| `/about` | Sobre nosotras |
+| `/courses` | Listado de cursos |
+| `/courses/:slug` | Detalle de curso |
+| `/faq` | Preguntas frecuentes |
+| `/contact` | Contacto |
+| `/not-found` | Página 404 |
+
+## Scaffolding
 
 ```bash
-ng generate component component-name
+# Generar un componente
+bunx ng generate component nombre-componente
+
+# Ver todos los esquemas disponibles
+bunx ng generate --help
 ```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
