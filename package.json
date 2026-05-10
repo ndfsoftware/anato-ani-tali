@@ -8,10 +8,10 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:anato-ani-tali": "node dist/anato-ani-tali/server/server.mjs"
+    "serve:ssr:anato-ani-tali": "bun dist/anato-ani-tali/server/server.mjs"
   },
   "private": true,
-  "packageManager": "npm@11.12.1",
+  "packageManager": "bun@1.3.13",
   "dependencies": {
     "@angular/common": "^21.2.0",
     "@angular/compiler": "^21.2.0",
