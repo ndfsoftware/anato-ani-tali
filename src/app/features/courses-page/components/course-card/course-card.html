@@ -1,26 +1,20 @@
 <div class="flex gap-7 mt-7 w-3xl">
   <div class="indicator indicator-center w-full h-full">
     @if(course().badge?.label) {
-    <span class="indicator-item badge badge-warning badge-lg font-bold"
-      >{{course().badge!.label}}</span
-    >
+    <span class="indicator-item badge badge-warning badge-lg font-bold">{{course().badge!.label}}</span>
     }
     <div class="card card-side w-full h-full bg-white/80 border border-base-200">
       <div class="card-body gap-2.5">
         <div class="flex justify-between flex-col md:flex-row gap-2.5">
-          <div class="flex gap-2.5 items-end">
-            <h2 class="text-2xl font-semibold text-primary">{{ course().title | titlecase }}</h2>
+          <div class="flex gap-2.5 flex-col lg:flex-row">
+            <h2 class="text-2xl font-semibold text-primary text-center md:text-left">{{ course().title | titlecase }}
+            </h2>
             @if(status() !== courseStatus.FINALIZADO) {
-            <h3 class="font-semibold" [class]="statusColor()">{{status()}}</h3>
+            <h3 class="font-semibold flex items-end" [class]="statusColor()">{{status()}}</h3>
             }
           </div>
           <div>
-            <app-badge
-              [title]="modality() | titlecase"
-              [icon]="modalityIcon()"
-              size="lg"
-              type="secondary"
-            />
+            <app-badge [title]="modality() | titlecase" [icon]="modalityIcon()" size="lg" type="secondary" />
           </div>
         </div>
         <div>{{course().description}}</div>
@@ -44,11 +38,7 @@
           </div>
 
           <div>
-            <a
-              class="btn btn-primary btn-block rounded-lg"
-              [routerLink]="['/courses', course().slug]"
-              >Ver detalles</a
-            >
+            <a class="btn btn-primary btn-block rounded-lg" [routerLink]="['/courses', course().slug]">Ver detalles</a>
           </div>
         </div>
       </div>

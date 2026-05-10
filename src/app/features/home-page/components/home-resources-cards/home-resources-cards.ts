@@ -3,11 +3,11 @@ import { RUNTIME_CONFIG } from '@app/core/config/runtime-config';
 import { HomeResourceCard } from '../../interfaces/homeResourceCard.interface';
 
 @Component({
-  selector: 'app-home-links-cards',
+  selector: 'home-resources-cards',
   standalone: true,
-  templateUrl: './home-links-cards.html',
+  templateUrl: './home-resources-cards.html',
 })
-export class HomeLinksCards {
+export class HomeResourcesCards {
   private readonly runtimeConfig = inject(RUNTIME_CONFIG);
 
   readonly cards: HomeResourceCard[] = [

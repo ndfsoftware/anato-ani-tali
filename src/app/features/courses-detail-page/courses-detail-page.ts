@@ -14,7 +14,7 @@ import {
   getCourseStatusColor,
 } from '@app/core/utils/course.utils';
 import { Badge } from '@app/shared/ui/badge/badge';
-import { TitleCasePipe } from '@angular/common';
+import { Location, TitleCasePipe } from '@angular/common';
 import { COURSE_STATUS } from '@app/core/interfaces/course-status';
 import { DiscountMethods } from '@app/shared/ui/discount-methods/discount-methods';
 import { COURSE_TYPE } from '../courses-page/interfaces/course.interface';
@@ -37,9 +37,10 @@ import { SeoService } from '@app/core/services/seo.service';
   templateUrl: './courses-detail-page.html',
 })
 export default class CoursesDetailPage {
-  activateRoute = inject(ActivatedRoute);
-  courseService = inject(CourseService);
-  seoService = inject(SeoService);
+  private readonly activateRoute = inject(ActivatedRoute);
+  private readonly courseService = inject(CourseService);
+  private readonly seoService = inject(SeoService);
+  private readonly location = inject(Location);
 
   slug = this.activateRoute.snapshot.params['slug'];
   course = toSignal(this.courseService.getBySlug(this.slug));
@@ -60,8 +61,8 @@ export default class CoursesDetailPage {
       const course = this.course();
       if (!course) {
         this.seoService.setPageSeo({
-          title: 'Curso no encontrado | Anatomía con Ani y Tali',
-          description: 'El curso solicitado no está disponible.',
+          title: 'Curso no encontrado | Anatomï¿½a con Ani y Tali',
+          description: 'El curso solicitado no estï¿½ disponible.',
           path: `/courses/${this.slug}`,
           noIndex: true,
         });
@@ -73,7 +74,7 @@ export default class CoursesDetailPage {
       const image = course.images?.[0] ?? '/assets/images/columna-2.png';
 
       this.seoService.setPageSeo({
-        title: `${course.title} | Curso de Anatomía para Medicina UBA`,
+        title: `${course.title} | Curso de Anatomï¿½a para Medicina UBA`,
         description,
         path: routePath,
         type: 'article',
@@ -87,7 +88,7 @@ export default class CoursesDetailPage {
         description: course.description,
         provider: {
           '@type': 'EducationalOrganization',
-          name: 'Anatomía con Ani y Tali',
+          name: 'Anatomï¿½a con Ani y Tali',
           url: this.seoService.getAbsoluteUrl('/'),
         },
         image: [this.seoService.getAbsoluteUrl(image)],
@@ -98,7 +99,7 @@ export default class CoursesDetailPage {
           educationalRole: 'student',
           audienceType: 'Estudiantes de Medicina UBA',
         },
-        about: ['Anatomía', 'Facultad de Medicina', 'UBA', 'Locomotor', 'Esplacnología'],
+        about: ['Anatomï¿½a', 'Facultad de Medicina', 'UBA', 'Locomotor', 'Esplacnologï¿½a'],
         hasCourseInstance: {
           '@type': 'CourseInstance',
           courseMode: course.modality,
@@ -140,5 +141,9 @@ export default class CoursesDetailPage {
 
   closeContactModal(): void {
     this.isContactModalOpen.set(false);
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 }
