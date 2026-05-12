@@ -5,19 +5,20 @@ Sitio web para cursos de anatomía orientados a estudiantes de medicina de la UB
 ## Stack
 
 - **Framework:** Angular 21 (con SSR via `@angular/ssr`)
-- **Package manager:** Bun
+- **Package manager:** pnpm
 - **Estilos:** Tailwind CSS v4 + DaisyUI
 - **Email:** EmailJS
 - **Tests:** Vitest
 
 ## Requisitos previos
 
-- [Bun](https://bun.sh/) >= 1.3.13
+- [pnpm](https://pnpm.io/) >= 11.1.1
+- Node.js >= 20
 
 ## Instalación
 
 ```bash
-bun install
+pnpm install
 ```
 
 ## Variables de entorno
@@ -48,11 +49,11 @@ NG_APP_INTRODUCTION=https://drive.google.com/...
 
 | Comando | Descripción |
 |---|---|
-| `bun run start` | Dev server en `http://localhost:4200` (carga `.env`) |
-| `bun run build` | Build de producción en `dist/` |
-| `bun run serve:ssr:anato-ani-tali` | Servidor SSR desde el build (`dist/`) |
-| `bun run watch` | Build en modo watch (desarrollo) |
-| `bun run test` | Ejecuta los tests con Vitest |
+| `pnpm start` | Dev server en `http://localhost:4200` (carga `.env`) |
+| `pnpm build` | Build de producción en `dist/` |
+| `pnpm serve:ssr:anato-ani-tali` | Servidor SSR desde el build (`dist/`) |
+| `pnpm watch` | Build en modo watch (desarrollo) |
+| `pnpm test` | Ejecuta los tests con Vitest |
 
 ## Rutas
 
@@ -70,8 +71,8 @@ NG_APP_INTRODUCTION=https://drive.google.com/...
 
 ```bash
 # Generar un componente
-bunx ng generate component nombre-componente
+pnpm ng generate component nombre-componente
 
 # Ver todos los esquemas disponibles
-bunx ng generate --help
+pnpm ng generate --help
 ```
